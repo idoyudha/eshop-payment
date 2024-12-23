@@ -28,7 +28,7 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 aws:
-  region: us-east-1
+  region: ${AWS_REGION}
   cognito:
     userPoolId: ${COGNITO_USER_POOL_ID}
     clientId: ${COGNITO_CLIENT_ID}
