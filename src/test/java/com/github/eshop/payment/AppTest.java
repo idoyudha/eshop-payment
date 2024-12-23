@@ -1,4 +1,4 @@
-package com.github.eshop.order;
+package com.github.eshop.payment;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

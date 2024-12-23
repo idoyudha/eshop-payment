@@ -1,4 +1,4 @@
-package com.github.eshop.order;
+package com.github.eshop.payment;
 
 /**
  * Hello world!
