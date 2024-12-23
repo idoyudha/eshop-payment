@@ -1,4 +1,4 @@
-package com.github.eshop.payment.interfaces.rest;
+package com.github.eshop.payment.controller.rest;
 
 import com.github.eshop.payment.application.dto.CreatePaymentRequest;
 import com.github.eshop.payment.application.dto.PaymentResponse;
