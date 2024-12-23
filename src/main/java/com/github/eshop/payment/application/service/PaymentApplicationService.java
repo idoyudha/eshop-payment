@@ -1,0 +1,56 @@
+package com.github.eshop.payment.application.service;
+
+import com.github.eshop.payment.application.dto.CreatePaymentRequest;
+import com.github.eshop.payment.application.dto.PaymentResponse;
+import com.github.eshop.payment.domain.entity.Payment;
+import com.github.eshop.payment.domain.entity.PaymentStatus;
+import com.github.eshop.payment.domain.service.PaymentService;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Service
+@RequiredArgsConstructor
+public class PaymentApplicationService {
+    private final PaymentService paymentService;
+
+    @Transactional
+    public PaymentResponse createPayment(CreatePaymentRequest request) {
+        // TODO: upload image to S3
+        String imageUrl = "";
+
+        Payment payment = Payment.builder()
+                .id(UUID.randomUUID())
+                .orderId(request.getOrderId())
+                .imageUrl(imageUrl)
+                .status(PaymentStatus.PENDING)
+                .note(request.getNote())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
+
+        Payment savedPayment = paymentService.createPayment(payment);
+
+        return paymentEntityToPaymentResponse(savedPayment);
+    }
+
+    public PaymentResponse getPayment(UUID id) {
+        Payment payment = paymentService.getPayment(id);
+        return paymentEntityToPaymentResponse(payment);
+    }
+
+    private PaymentResponse paymentEntityToPaymentResponse(Payment payment) {
+        return PaymentResponse.builder()
+                .id(payment.getId())
+                .orderId(payment.getOrderId())
+                .imageUrl(payment.getImageUrl())
+                .status(payment.getStatus())
+                .note(payment.getNote())
+                .createdAt(payment.getCreatedAt())
+                .updatedAt(payment.getUpdatedAt())
+                .build();
+    }
+}

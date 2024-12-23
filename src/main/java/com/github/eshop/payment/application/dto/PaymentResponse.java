@@ -1,6 +1,6 @@
-package com.github.eshop.payment.domain.entity;
+package com.github.eshop.payment.application.dto;
 
-
+import com.github.eshop.payment.domain.entity.PaymentStatus;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class Payment {
+public class PaymentResponse {
     private UUID id;
     private UUID orderId;
     private String imageUrl;
@@ -17,5 +17,4 @@ public class Payment {
     private String note;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private LocalDateTime deletedAt;
 }

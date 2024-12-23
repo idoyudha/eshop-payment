@@ -13,6 +13,7 @@
     <spring.kafka.version>3.3.1</spring.kafka.version>
     <aws.sdk.version>2.29.39</aws.sdk.version>
     <lombok.version>1.18.36</lombok.version>
+    <jakarta.validation.version>3.1.0</jakarta.validation.version>
   </properties>
 
   <dependencies>
@@ -65,6 +66,11 @@
       <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>jakarta.validation</groupId>-->
+<!--      <artifactId>jakarta.validation-api</artifactId>-->
+<!--      <version>${jakarta.validation.version}</version>-->
+<!--    </dependency>-->
   </dependencies>
 
   <build>
