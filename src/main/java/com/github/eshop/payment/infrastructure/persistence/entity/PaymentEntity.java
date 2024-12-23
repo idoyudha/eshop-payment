@@ -3,7 +3,6 @@ package com.github.eshop.payment.infrastructure.persistence.entity;
 import com.github.eshop.payment.domain.entity.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,9 +12,10 @@ import java.util.UUID;
 @Data
 public class PaymentEntity {
     @Id
+    @Column(columnDefinition = "VARCHAR(36)")
     private UUID id;
 
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_id", nullable = false, columnDefinition = "VARCHAR(36)")
     private UUID orderId;
 
     @Column(name = "image_url", nullable = false)
