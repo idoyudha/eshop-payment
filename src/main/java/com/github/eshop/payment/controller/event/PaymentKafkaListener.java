@@ -14,7 +14,7 @@ public class PaymentKafkaListener {
     private final PaymentService paymentService;
     private final ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "payment-updated")
+    @KafkaListener(topics = "payment-updated", groupId = "${spring.kafka.consumer.group-id")
     public void handlePaymentUpdated(String message) {
         try {
             PaymentUpdatedEvent event = objectMapper.readValue(message, PaymentUpdatedEvent.class);
