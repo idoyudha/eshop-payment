@@ -19,6 +19,7 @@ public class PaymentKafkaListener {
         try {
             PaymentUpdatedEvent event = objectMapper.readValue(message, PaymentUpdatedEvent.class);
             paymentService.updatePaymentStatus(event.getPaymentId(), event.getStatus());
+            log.info("Payment status updated for Id: {}", event.getPaymentId());
         } catch (Exception e) {
             log.error("Failed to process payment updated event: {}", e.getMessage(), e);
         }
