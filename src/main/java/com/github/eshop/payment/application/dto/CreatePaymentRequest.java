@@ -10,14 +10,10 @@ import java.util.UUID;
 @Data
 public class CreatePaymentRequest {
     @NotNull(message = "Order ID is required")
-    private UUID order_id;
+    private UUID orderId;
 
     @NotNull(message = "Image is required")
     private MultipartFile image;
 
     private String note;
-
-    public UUID getOrderId() {
-        return order_id;
-    }
 }
