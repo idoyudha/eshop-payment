@@ -1,6 +1,9 @@
 server:
   port: 2006
 
+auth:
+  base-url: http://eshop-auth
+
 spring:
   application:
     name: eshop-payment
