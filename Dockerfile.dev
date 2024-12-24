@@ -1,13 +1,17 @@
-FROM maven:3.8.4-openjdk-11-slim as build
+FROM maven:3.9.6-eclipse-temurin-21-jammy as build
 
 WORKDIR /app
 
+# for dependency resolution
 COPY pom.xml .
 
+# dependencies
 RUN mvn dependency:go-offline -B
 
+# copy source code
 COPY src ./src
 
+# development stage -> spring boot devtools
 FROM build as dev
 EXPOSE 2006
 CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005'"]

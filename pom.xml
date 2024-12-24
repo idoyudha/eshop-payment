@@ -2,6 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.1</version>
+    <relativePath/>
+  </parent>
+
   <groupId>com.github.eshop.payment</groupId>
   <artifactId>eshop-payment</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -9,7 +16,7 @@
 
   <properties>
     <java.version>21</java.version>
-    <springboot.version>3.4.1</springboot.version>
+    <parent.version>3.2.1</parent.version>
     <spring.kafka.version>3.3.1</spring.kafka.version>
     <mysql.connector.version>9.1.0</mysql.connector.version>
     <aws.sdk.version>2.29.39</aws.sdk.version>
@@ -22,22 +29,22 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>${springboot.version}</version>
+      <version>${parent.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
-      <version>${springboot.version}</version>
+      <version>${parent.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
-      <version>${springboot.version}</version>
+      <version>${parent.version}</version>
     </dependency>
 <!--    <dependency>-->
 <!--      <groupId>org.springframework.boot</groupId>-->
 <!--      <artifactId>spring-boot-starter-test</artifactId>-->
-<!--      <version>${springboot.version}</version>-->
+<!--      <version>${parent.version}</version>-->
 <!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.kafka</groupId>
@@ -93,6 +100,16 @@
               <artifactId>lombok</artifactId>
             </exclude>
           </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
     </plugins>

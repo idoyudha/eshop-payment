@@ -15,14 +15,14 @@ public class PaymentKafkaListener {
     private final PaymentService paymentService;
     private final ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "payment-updated", groupId = "${spring.kafka.consumer.group-id")
-    public void handlePaymentUpdated(String message) {
-        try {
-            PaymentUpdatedEvent event = objectMapper.readValue(message, PaymentUpdatedEvent.class);
-            Payment payment = paymentService.updatePaymentStatus(event.getPaymentId(), event.getStatus());
-            log.info("Payment status updated for Id: {}", payment.getId());
-        } catch (Exception e) {
-            log.error("Failed to process payment updated event: {}", e.getMessage(), e);
-        }
-    }
+//    @KafkaListener(topics = "payment-updated", groupId = "${spring.kafka.consumer.group-id")
+//    public void handlePaymentUpdated(String message) {
+//        try {
+//            PaymentUpdatedEvent event = objectMapper.readValue(message, PaymentUpdatedEvent.class);
+//            Payment payment = paymentService.updatePaymentStatus(event.getPaymentId(), event.getStatus());
+//            log.info("Payment status updated for Id: {}", payment.getId());
+//        } catch (Exception e) {
+//            log.error("Failed to process payment updated event: {}", e.getMessage(), e);
+//        }
+//    }
 }
