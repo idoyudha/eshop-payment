@@ -15,6 +15,7 @@
     <aws.sdk.version>2.29.39</aws.sdk.version>
     <lombok.version>1.18.36</lombok.version>
     <jakarta.validation.version>3.0.2</jakarta.validation.version>
+    <junit.version>4.13.2</junit.version>
   </properties>
 
   <dependencies>
@@ -71,6 +72,12 @@
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
       <version>${jakarta.validation.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
