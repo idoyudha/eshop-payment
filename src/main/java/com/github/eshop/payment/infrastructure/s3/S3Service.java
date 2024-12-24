@@ -23,7 +23,7 @@ public class S3Service {
     @Value("${aws.s3.bucket}")
     private String bucket;
 
-    @Value("${aws.cloudfront.domain-name}")
+    @Value("${aws.cloudfront.domain}")
     private String cloudfrontDomain;
 
     public String uploadImage(MultipartFile file) throws IOException {

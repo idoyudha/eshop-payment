@@ -7,7 +7,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+        "com.github.eshop.payment.infrastructure",
+        "com.github.eshop.payment.application",
+        "com.github.eshop.payment.domain",
+        "com.github.eshop.payment.controller"
+})
 @EnableKafka
 @EnableTransactionManagement
 @EntityScan(basePackages = "com.github.eshop.payment.infrastructure.persistence.entity")
