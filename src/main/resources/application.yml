@@ -35,10 +35,13 @@ spring:
 
 aws:
   region: ${AWS_REGION}
-  cognito:
-    userPoolId: ${COGNITO_USER_POOL_ID}
-    clientId: ${COGNITO_CLIENT_ID}
+  credentials:
+    access-key: ${AWS_ACCESS_KEY}
+    secret-key: ${AWS_SECRET_KEY}
   s3:
     bucket: ${S3_BUCKET_NAME}
-    accessKey: ${AWS_ACCESS_KEY}
-    secretKey: ${AWS_SECRET_KEY}
+  cloudfront:
+    domain: ${CLOUDFRONT_DOMAIN}
+  cognito:
+    user-pool-id: ${COGNITO_USER_POOL_ID}
+    client-id: ${COGNITO_CLIENT_ID}
