@@ -1,6 +1,7 @@
 package com.github.eshop.payment.infrastructure.persistence.entity;
 
 import com.github.eshop.payment.domain.entity.PaymentStatus;
+import com.github.eshop.payment.infrastructure.persistence.converter.UUIDConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,10 +13,11 @@ import java.util.UUID;
 @Data
 public class PaymentEntity {
     @Id
-    @Column(columnDefinition = "VARCHAR(36)")
+    @Convert(converter = UUIDConverter.class)
     private UUID id;
 
-    @Column(name = "order_id", nullable = false, columnDefinition = "VARCHAR(36)")
+    @Column(name = "order_id", nullable = false)
+    @Convert(converter = UUIDConverter.class)
     private UUID orderId;
 
     @Column(name = "image_url", nullable = false)

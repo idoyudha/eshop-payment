@@ -1,12 +1,13 @@
-CREATE TABLE IF NOT EXISTS `payments` (
-  `id` uuid PRIMARY KEY,
-  `order_id` uuid NOT NULL,
-  `image_url` varchar(255) NOT NULL,
-  `status` ENUM ('PENDING', 'APPROVED', 'REJECTED') NOT NULL,
-  `note` varchar(255),
-  `created_at` timestamp NOT NULL,
-  `updated_at` timestamp NOT NULL,
-  `deleted_at` timestamp
-);
+CREATE TABLE payments (
+    id VARCHAR(36) NOT NULL,
+    order_id VARCHAR(36) NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    note VARCHAR(255),
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL,
+    deleted_at TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE INDEX `payments_index_0` ON `payments` (`order_id`);
+CREATE INDEX idx_payments_order_id ON payments(order_id);

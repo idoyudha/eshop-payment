@@ -7,6 +7,7 @@ import com.github.eshop.payment.domain.entity.PaymentStatus;
 import com.github.eshop.payment.domain.service.PaymentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,11 +15,13 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PaymentApplicationService {
     private final PaymentService paymentService;
 
     @Transactional
     public PaymentResponse createPayment(CreatePaymentRequest request) {
+        log.info("received payment request: {}", request);
         // TODO: upload image to S3
         String imageUrl = "";
 
@@ -32,6 +35,7 @@ public class PaymentApplicationService {
                 .updatedAt(LocalDateTime.now())
                 .build();
 
+        log.info("created payment entity: {}", payment);
         Payment savedPayment = paymentService.createPayment(payment);
 
         return paymentEntityToPaymentResponse(savedPayment);
