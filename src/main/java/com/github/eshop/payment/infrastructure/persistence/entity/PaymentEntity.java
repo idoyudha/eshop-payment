@@ -21,9 +21,6 @@ public class PaymentEntity {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
-    @Column(name = "total_amount")
-    private Double totalAmount;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private PaymentStatus status;

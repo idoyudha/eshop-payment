@@ -19,7 +19,7 @@ public class PaymentController {
 
     // TODO: add cognito middleware
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<PaymentResponse> createPayment(@RequestBody CreatePaymentRequest request) {
+    public ResponseEntity<PaymentResponse> createPayment(@ModelAttribute CreatePaymentRequest request) {
         PaymentResponse response = paymentApplicationService.createPayment(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
