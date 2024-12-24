@@ -39,7 +39,7 @@ public class S3Service {
 
             s3Client.putObject(putObjectRequest, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
 
-            return String.format("https://%s/%s", cloudfrontDomain, key);
+            return String.format("%s/%s", cloudfrontDomain, key);
         } catch (Exception e) {
             log.error("Error uploading file to S3: {}", e.getMessage());
             throw new IOException("Failed to upload file to S3", e);
