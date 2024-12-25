@@ -28,7 +28,6 @@ public class PaymentKafkaProducer {
                     .status(payment.getStatus())
                     .note(payment.getNote())
                     .build();
-
             String message = objectMapper.writeValueAsString(event);
             kafkaTemplate.send(paymentUpdatedTopic, payment.getId().toString(), message);
             log.info("published payment updated event: {}", message);
