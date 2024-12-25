@@ -3,6 +3,7 @@ package com.github.eshop.payment.domain.service;
 import com.github.eshop.payment.domain.entity.Payment;
 import com.github.eshop.payment.domain.entity.PaymentStatus;
 import com.github.eshop.payment.domain.repository.PaymentRepository;
+import com.github.eshop.payment.infrastructure.kafka.PaymentKafkaProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PaymentService {
     private final PaymentRepository paymentRepository;
+    private final PaymentKafkaProducer paymentKafkaProducer;
 
     public Payment createPayment(Payment payment) {
         return paymentRepository.save(payment);
@@ -27,6 +29,10 @@ public class PaymentService {
         Payment payment = getPayment(id);
         payment.setStatus(status);
         payment.setUpdatedAt(LocalDateTime.now());
-        return paymentRepository.save(payment);
+
+        Payment updatedPayment = paymentRepository.save(payment);
+        paymentKafkaProducer.publishPaymentUpdated(updatedPayment);
+
+        return updatedPayment;
     }
 }
