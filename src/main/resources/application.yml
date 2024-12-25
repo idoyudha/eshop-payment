@@ -2,7 +2,7 @@ server:
   port: 2006
 
 auth:
-  base-url: http://eshop-auth
+  base-url: ${AUTH_BASE_URL}
 
 spring:
   application:
