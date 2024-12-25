@@ -27,14 +27,14 @@ spring:
     multipart:
       max-file-size: 1MB
       max-request-size: 1MB
-
+  
   kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:kafka0:29092}
-    consumer:
-      group-id: sale-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    topics:
+      payment-updated: payment-updated
 
 aws:
   region: ${AWS_REGION}
