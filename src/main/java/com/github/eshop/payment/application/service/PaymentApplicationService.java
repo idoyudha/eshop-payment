@@ -2,6 +2,7 @@ package com.github.eshop.payment.application.service;
 
 import com.github.eshop.payment.application.dto.CreatePaymentRequest;
 import com.github.eshop.payment.application.dto.PaymentResponse;
+import com.github.eshop.payment.application.dto.UpdatePaymentStatusRequest;
 import com.github.eshop.payment.application.exception.PaymentException;
 import com.github.eshop.payment.domain.entity.Payment;
 import com.github.eshop.payment.domain.entity.PaymentStatus;
@@ -52,6 +53,11 @@ public class PaymentApplicationService {
 
     public PaymentResponse getPayment(UUID id) {
         Payment payment = paymentService.getPayment(id);
+        return paymentEntityToPaymentResponse(payment);
+    }
+
+    public PaymentResponse updatePaymentStatus(UpdatePaymentStatusRequest request) {
+        Payment payment = paymentService.updatePaymentStatus(request.getPaymentId(), request.getStatus());
         return paymentEntityToPaymentResponse(payment);
     }
 
