@@ -12,9 +12,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // TODO: add AuthenticatonFilter for cognito middleware
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/**")
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/v1/**")
                         .permitAll().anyRequest().authenticated());
         return http.build();
     }
