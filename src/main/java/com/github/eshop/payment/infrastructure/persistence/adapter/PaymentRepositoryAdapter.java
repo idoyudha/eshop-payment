@@ -7,6 +7,7 @@ import com.github.eshop.payment.infrastructure.persistence.repository.JpaPayment
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,6 +29,13 @@ public class PaymentRepositoryAdapter implements PaymentRepository {
                 .map(this::mapToDomain);
     }
 
+    @Override
+    public List<Payment> findAll() {
+        return jpaPaymentRepository.findAll()
+                .stream()
+                .map(this::mapToDomain)
+                .toList();
+    }
 
     private PaymentEntity mapToEntity(Payment payment) {
         PaymentEntity entity = new PaymentEntity();

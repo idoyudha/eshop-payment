@@ -1,5 +1,6 @@
 package com.github.eshop.payment.controller.rest;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.github.eshop.payment.application.dto.ApiResponse;
@@ -33,8 +34,19 @@ public class PaymentController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<PaymentResponse>>> getAllPayments() {
+        List<PaymentResponse> payments = paymentApplicationService.getAllPayments();
+        ApiResponse<List<PaymentResponse>> response = ApiResponse.<List<PaymentResponse>>builder()
+                .code(HttpStatus.OK.value())
+                .data(payments)
+                .message("payments retrieved successfully")
+                .build();
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<PaymentResponse>> getPayment(@PathVariable UUID id) {
+    public ResponseEntity<ApiResponse<PaymentResponse>> getPaymentById(@PathVariable UUID id) {
         PaymentResponse payment = paymentApplicationService.getPayment(id);
         ApiResponse<PaymentResponse> response = ApiResponse.<PaymentResponse>builder()
                 .code(HttpStatus.OK.value())
