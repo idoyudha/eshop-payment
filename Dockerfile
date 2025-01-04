@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests -B
 
 # Step 2: Production stage
-FROM eclipse-temurin:21-jre-jammy
+FROM eclipse-temurin:21-jre-jammy as production
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
