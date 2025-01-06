@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -51,6 +52,11 @@ public class PaymentApplicationService {
 
     }
 
+    public List<PaymentResponse> getAllPayments() {
+        List<Payment> payments = paymentService.getAllPayments();
+        return paymentEntitiesToPaymentResponses(payments);
+    }
+
     public PaymentResponse getPayment(UUID id) {
         Payment payment = paymentService.getPayment(id);
         return paymentEntityToPaymentResponse(payment);
@@ -71,5 +77,11 @@ public class PaymentApplicationService {
                 .createdAt(payment.getCreatedAt())
                 .updatedAt(payment.getUpdatedAt())
                 .build();
+    }
+
+    private List<PaymentResponse> paymentEntitiesToPaymentResponses(List<Payment> payments) {
+        return payments.stream()
+                .map(this::paymentEntityToPaymentResponse)
+                .toList();
     }
 }

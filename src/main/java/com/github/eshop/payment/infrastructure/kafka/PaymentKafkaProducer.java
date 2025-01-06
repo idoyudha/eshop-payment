@@ -28,10 +28,9 @@ public class PaymentKafkaProducer {
                     .status(payment.getStatus())
                     .note(payment.getNote())
                     .build();
-
             String message = objectMapper.writeValueAsString(event);
             kafkaTemplate.send(paymentUpdatedTopic, payment.getId().toString(), message);
-            log.info("published payment updated event: {}", message);
+            log.info("published {} event with message: {}", paymentUpdatedTopic, message);
         } catch (Exception e) {
             log.error("error publishing payment updated event: {}", e.getMessage());
         }
