@@ -7,28 +7,28 @@ This service handles payment processing and management. Customer will upload the
 ### Architecture
 ```
 src/main/java/com/github/eshop/payment/
-├── domain/                    # Business Rules
-│   ├── entity/                # Business objects or models
-│   ├── repository/            # Repository interfaces
-│   └── service/               # Domain logic
+├── domain/             # business Rules
+│   ├── entity/         # business objects or models
+│   ├── repository/     # repository interfaces
+│   └── service/        # domain logic
 │
-├── application/               # Application Business Rules
-│   ├── dto/                   # Data Transfer Objects
-│   ├── service/               # Use cases
-│   └── exception/             # Application specific exceptions
+├── application/        # application Business Rules
+│   ├── dto/            # data Transfer Objects
+│   ├── service/        # use cases
+│   └── exception/      # application specific exceptions
 │
-├── infrastructure/            # Frameworks & Drivers
-│   ├── config/                # Framework configurations
-│   ├── persistence/           # Database implementations
-│   │   ├── entity/
-│   │   ├── repository/
-│   │   └── adapter/
-│   ├── security/             # Security implementations
-│   └── s3/                   # External service implementations
+├── infrastructure/     # frameworks & Drivers
+│   ├── config/         # framework configurations
+│   ├── persistence/    # database implementations
+│   │   ├── entity/     # entities of business logic (models) can be used in any layer
+│   │   ├── repository/ # repository interface
+│   │   └── adapter/    # jpa adapter repository
+│   ├── security/       # security implementations
+│   └── s3/             # external service implementations
 │
-└── controller/               # Controller Adapters
-    ├── rest/                 # REST controllers
-    └── event/               # Event listeners
+└── controller/         # controller Adapters
+    ├── rest/           # REST controllers
+    └── event/          # event listeners
 ```
 
 ### Tech Stack
