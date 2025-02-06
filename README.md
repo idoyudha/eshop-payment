@@ -32,10 +32,10 @@ src/main/java/com/github/eshop/payment/
 ```
 
 ### Tech Stack
-- Java
-- Springboot
-- MySQL
-- AWS S3
-- AWS Cognito
-- Apache Kafka
-- Maven
+- Programming Language: Java
+- CI/CD: Github Actions
+- Framework: Springboot
+- Database: MySQL and AWS S3
+- Identity and Access Management: AWS Cognito
+- Message Broker: Apache Kafka
+- Container: Docker
